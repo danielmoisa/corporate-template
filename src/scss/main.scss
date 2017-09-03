@@ -1,0 +1,313 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:100,300,400');
+
+// COLORS
+$black: #000;
+$white: #fff;
+$red: #E23E57;
+$yellow: #FFF200;
+$light-yellow: #fff64d;
+$gray-white: #F1F1F1;
+$gray-black: #595959;
+$gray-bg: #f2f3f2;
+$gray: #8c8c8c;
+
+// BASE 
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+body, html {
+    text-align: center;
+    font-family: 'Lato', sans-serif;
+    letter-spacing: .05rem;
+    width: 100%;
+    color: $black;
+    text-rendering: optimizeLegibility;
+}
+
+// HEADER
+.header {
+
+}
+
+.site-logo {
+    display: inline-block;
+    padding: 1rem 5rem;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.2rem;
+    letter-spacing: 0.10rem;
+    color: $gray-black;
+}
+
+.navigation {
+    .menu-toggle {
+        z-index: 999;
+        padding: 0 .5rem;
+        position: absolute;
+        top: .3rem;
+        right: .5rem;
+        cursor: pointer;
+        font-size: 2.6rem;
+        &__bars {}
+        &__exit {
+            display: none;
+        }
+    }
+    .menu {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        margin: 0;
+        z-index: 300;
+        width: 100%;
+        height: 100%;
+        list-style: none;
+        background: $yellow;
+        padding-top: 8rem;
+        padding-left: 0;
+        &__item {
+            margin: .7rem auto;
+            display: block;
+        }
+        &__link {
+            text-decoration: none;
+            color: $black;
+            font-size: 4rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.15rem;
+            transition: 200ms all;
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+}
+
+
+// MAIN CONTENT 
+.main-content {
+    height: 100%;
+    background: $white url('../img/main-content-bg.jpg') no-repeat center center;
+    background-size: cover;
+}
+
+.main-content--overlay {
+    height: 100%;
+    width: 100%;
+    padding: 2rem 0;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 09));
+}
+
+// ADVERTISE
+.advertise {
+    color: $white;
+    padding: 2rem 1rem .5rem 1rem;;
+    &__pre-title {
+        color: $yellow;
+        text-transform: uppercase;
+        font-weight: bold;
+    }
+    &__title {
+        font-size: 3.5rem;
+    }
+    &__sub-title {
+        font-size: 1.3rem;
+        font-weight: normal;
+        margin: 2rem auto;
+        padding: 0 1.5rem;
+        color: $gray-white;
+        max-width: 40rem;
+    }
+}
+
+// CONNECT
+.connect {
+    &__title {
+        margin-top: 5rem;
+        padding: 0 2rem;
+        color: $white;
+        font-size: 2.4rem;
+    }
+    &__sub-title {
+        @extend .advertise__sub-title;
+    }
+}
+
+.form-wrapper {
+  text-align: center;
+  width: 70%;
+  max-width: 23rem;
+  min-height: 16rem;
+  margin: 1rem auto;
+  padding: 0;
+  background: trasparent;
+  border-radius: 0.2rem;
+}
+.form {
+  &-item {
+    width: 100%;
+    padding: .9rem 1rem;
+    letter-spacing: 0.02rem;
+    font-size: .9rem;
+    font-weight: 100;
+    border: 1px solid $gray-white;
+    &:focus {
+        outline: none;
+    }
+  }
+  &-button {
+    width: 100%;
+    margin: 1rem auto .5rem auto;
+    padding: .9rem 2rem;
+    border: none;
+    background-color: $yellow;
+    color: $black;
+    font-size: .8rem;
+    font-weight: bold;
+    letter-spacing: 0.05rem;
+    text-transform: uppercase;
+    box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.5);
+    transition: 200ms all;
+    cursor: pointer;
+  }
+  &-message {
+    font-size: 0.8rem;
+    color: $white;
+  }
+  &-switch-create {
+    color: $yellow;
+    cursor: pointer;
+    transition: 200ms all;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.form-login {
+    display: none;
+}
+
+.form-register {
+}
+
+.form-switch-login {
+  @extend .form-switch-create;
+}
+
+// IF NO GRID SUPPORT
+@supports not (display: grid) {
+    .page-wrapper {
+        max-width: 50em;
+        margin: 0 auto;
+    }
+}
+
+// CSS GRID LAYOUT FOR DESKTOP AND WIDER SCREENS
+@supports (display: grid) {
+    @media screen and (min-width: 900px) {
+        .header {
+            text-align: left;
+            .site-logo {
+                display: inline-block;
+                width: 30%;
+                text-align: center;
+            }
+            .menu {
+                &-toggle {
+                    display: none;
+                }
+                display: inline-block!important;
+                position: absolute;
+                top: 0;
+                width: 70%;
+                height: 3.4rem;
+                margin-top: 0;
+                margin-left: 30%;
+                padding: 0;
+                z-index: 300;
+                list-style: none;
+                background: $gray-bg;
+                text-align: left;
+                &__item {
+                    margin: 0;
+                    width: 24%;
+                    padding: 1rem 7% 1.3rem 7%;
+                    display: inline-block;
+                    border-left: 0.1rem solid rgba(175, 182, 175, 0.3);
+                }
+                &__link {
+                    text-decoration: none;
+                    color: $gray;
+                    font-size: .9rem;
+                    font-weight: normal;
+                    text-transform: capitalize;
+                    letter-spacing: 0.1rem;
+                    transition: 200ms all;
+                    &:hover {
+                        text-decoration: none;
+                        color: $black;
+                    }
+                }
+            }
+        }
+
+        .main-content {
+            height: 42rem;
+        }
+
+        .main-content--overlay {
+            display: grid;
+            grid-template-columns: 1.7fr 1fr;
+            grid-template-rows: .5fr 1fr 1fr;
+            grid-template-areas:
+            "content content"
+            "advertise connect"
+            "advertise connect";
+        }
+
+        .advertise {
+            grid-area: advertise;
+            text-align: left;
+            padding-left: 6rem;
+            margin-right: -2rem;
+            &__pre-title {
+                margin-top: 1.5rem;
+            }
+            &__title {
+                margin: 0 auto 1rem auto;
+                font-size: 4rem;
+            }
+            &__sub-title {
+                font-size: .9rem;
+                margin: 0;
+                padding: 0;
+            }
+        }
+
+        .connect {
+            grid-area: connect;   
+            text-align: left;
+            &__title {
+                font-size: 1.5rem;
+                margin-top: 2rem;
+                margin-left: 15%;
+                margin-right: 3rem;
+                padding: 0;
+                max-width: 22rem;
+            }
+            &__sub-title {
+                margin-left: 15%;
+                margin-right: 3rem;
+                font-size: .8rem;
+                max-width: 22rem;
+            }     
+            .form-wrapper {
+
+            }
+        }
+    }
+}
